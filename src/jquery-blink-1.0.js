@@ -2,11 +2,13 @@ var defaultOptions;
 (function ($) {
     $.fn.blink = function (options) {
         defaultOptions = {
-            'activeCssClass': 'control-blink'
+            'activeCssClass': 'control-blink',
+            interval: 750
         };
         var $this = $(this);
         if (options) {
             defaultOptions.activeCssClass = options.activeCssClass;
+            defaultOptions.interval = options.interval;
         } else {
             options = defaultOptions;
         }
@@ -21,7 +23,7 @@ var defaultOptions;
             } else {
                 $this.addClass(options.activeCssClass);
             }
-        }, 750);
+        }, options.interval);
         $(this).attr("intervalId", intervalId);
         $(this).attr("blinkCssClass", options.activeCssClass);
     };
